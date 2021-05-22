@@ -1,0 +1,40 @@
+.navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2vw;
+    color: lightseagreen;
+    background-color: aliceblue;
+    z-index: 1000;
+    position: sticky;
+    top: 0;
+    overflow: visible;
+}
+
+.navbarBrand {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.links {
+    display: flex;
+    justify-content: space-evenly;
+    font-size: 1.5rem;
+    font-weight: 500;
+    list-style: none;
+}
+
+.linkContainer {
+    margin: 0 2vw;
+}
+
+.link {
+    text-decoration: none;
+    color: lightseagreen;
+}
+
+.link:hover {
+    color: lightcoral;
+}
+

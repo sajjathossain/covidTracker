@@ -1,0 +1,41 @@
+.footer {
+    text-align: center;
+    padding: 0 auto;
+    width: 100%;
+    font-size: 1.8rem;
+    position: absolute;
+    bottom: 0;
+    /* background-color: aliceblue; */
+}
+
+.socialLinks {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    list-style: none;
+}
+
+.linkContainer {
+    margin: 0 2vw;
+    text-align: center;
+}
+
+.link {
+    color: lightseagreen;
+}
+
+.github:hover {
+    color: rgb(17, 32, 39);
+}
+
+.linkedIn:hover {
+    color: #2f6df5;
+}
+
+.devTo:hover {
+    color: rgb(7, 9, 14);
+}
+
+.facebook:hover {
+    color: #1e52bb;
+}
