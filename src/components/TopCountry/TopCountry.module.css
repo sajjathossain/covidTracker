@@ -1,0 +1,8 @@
+.countryContainer {
+    height: 100%;
+    width: auto;
+    margin-left: 1vw;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: #fff;
+}

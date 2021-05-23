@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { Home, About, Contact } from './pages'
 import { Navbar, Footer } from './templates'
-import { DataProvider } from './Contexts/DataContext'
+import { DataProvider } from './contexts/DataContext'
 import './App.css'
 
 

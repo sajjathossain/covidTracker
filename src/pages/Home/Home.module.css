@@ -1,3 +1,30 @@
-.hommeContainer {
+.homeContainer {
+    height: 87vh;
     display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+    /* grid-template-areas: 
+    "results results topCountry"
+    "chart chart topCountry"
+    "chart chart topCountry"
+    "chart chart topCountry"
+    "chart chart topCountry"
+    "chart chart topCountry"
+    "chart chart topCountry"
+    "chart chart topCountry"
+    ; */
+}
+
+.results {
+    grid-column: 1 / span 2; ;
+}
+
+.topCountry {
+    grid-column: 3;
+    grid-row: 1 / span 8;
+}
+
+.chart {
+    grid-column: 1 / span 2;
+    grid-row: 2 / span 8;
 }

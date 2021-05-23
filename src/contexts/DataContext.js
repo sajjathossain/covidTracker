@@ -18,7 +18,7 @@ const DataProvider = (props) => {
     }, [])
 
     return (
-        <DataContext.Provider value={{value: {data, setData},countryValues: { countryData, setCountryData }, isLoading}}>
+        <DataContext.Provider value={{globalValues: data.Global, countryValues: { countryData, setCountryData }, isLoading}}>
             { props.children }
         </DataContext.Provider>
     )
