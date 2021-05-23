@@ -1,0 +1,4 @@
+.resultsContainer {
+    display: inline-flex;
+    gap: 0 1vw;
+}

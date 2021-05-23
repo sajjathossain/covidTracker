@@ -2,3 +2,7 @@
     display: grid;
     grid-template-rows: 8vh auto 5vh;
 }
+
+.wrapper {
+    padding: 1vw 2vw;
+}

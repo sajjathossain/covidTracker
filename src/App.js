@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 /**
@@ -10,16 +11,25 @@ import { Home, About, Contact } from './pages'
 */
 import { Navbar, Footer } from './templates'
 
-/**
- * * Component Imports Go Here
-*/
-
+import { fetchData } from './Api';
 import './App.css'
 
 
 const App = () => {
+  const [results, setResults] = useState([])
+
+  useEffect(() => {
+    const collectData = async () => { 
+      setResults(await fetchData())
+    }
+
+    collectData()
+  }, [])
+
+  console.log(results)
+
   return (
-    <div className="appBody">
+    <section className="appBody">
       <Router>
         <Navbar />
         <Switch>
@@ -29,7 +39,7 @@ const App = () => {
         </Switch>
         <Footer />
       </Router>
-    </div>
+    </section>
   );
 };
 
