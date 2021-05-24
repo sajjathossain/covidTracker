@@ -1,28 +1,42 @@
 import React, { useState, useEffect,createContext } from 'react'
-import { fetchGlobalData, fetchCountryData, toggleGlobal, isGlobal } from '../Api';
+import { fetchGlobalData, fetchCountryData, fetchAllCountryNames } from '../Api';
 
 const DataContext = createContext()
 
 const DataProvider = (props) => {
     const [data, setData] = useState([])
-    const [countryData, setCountryData] = useState([])
+    const [isGlobal, setIsGlobal] = useState(true)
+    const [countryName, setCountryName] = useState('')
+    const [allCountryName, setAllCountryName] = useState([])
     const [isLoading, setIsLoading] = useState(true)
+
+    const value = {
+        globalValues: data.Global,
+        countryValues: { countryName, setCountryName },
+        allCountryName,
+        isGlobal: { isGlobal, setIsGlobal },
+        isLoading
+    }
     
     useEffect(() => {        
         const collectData = async () => {
-            setData(await fetchGlobalData())
-            console.log(isGlobal);
-            await toggleGlobal()
-            console.log(isGlobal);
+            if(isGlobal) {
+                setData(await fetchGlobalData())
+            }
+            else {
+                setData(await fetchCountryData(countryName))
+
+            }
+            
+            setAllCountryName(await fetchAllCountryNames())
             setIsLoading(false)
         }
-
-
+        
         collectData()
-    }, [])
-
+    }, [isGlobal, countryName])
+    
     return (
-        <DataContext.Provider value={{globalValues: data.Global, countryValues: { countryData, setCountryData }, isLoading}}>
+        <DataContext.Provider value={value}>
             { props.children }
         </DataContext.Provider>
     )

@@ -10,9 +10,9 @@ const Results = () => {
     const [totalDeaths, setTotalDeaths] = useState(null)
     const [totalConfirmed, setTotalConfirmed] = useState(null)
     
-    const {globalValues, countryValues, isLoading} = useContext(DataContext)
-    const { countryData, setCountryData } = countryValues
-    
+    const {globalValues, countryValues, isGlobal, isLoading} = useContext(DataContext)
+    const {countryData, setCountryData } = countryValues
+    const countryName =  isGlobal ? "Global" : ""
     useEffect(() => {
         const getData = async () => {
             if(!isLoading) {
@@ -32,9 +32,9 @@ const Results = () => {
         {
             isLoading ? <LoadingAnimation /> : 
             <section className={`${styles.resultsContainer}`}>
-                <Result country="Global" resultText="Recovered" borderColor="lightseagreen" resultValue={totalRecovered} />
-                <Result country="Global" resultText="Infected" borderColor="lightskyblue" resultValue={totalConfirmed} />
-                <Result country="Global" resultText="Deaths" borderColor="lightcoral" resultValue={totalDeaths} />
+                <Result country={countryName} resultText="Recovered" borderColor="lightseagreen" resultValue={totalRecovered} />
+                <Result country={countryName} resultText="Infected" borderColor="lightskyblue" resultValue={totalConfirmed} />
+                <Result country={countryName} resultText="Deaths" borderColor="lightcoral" resultValue={totalDeaths} />
             </section>
         }
         </>
