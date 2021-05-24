@@ -1,13 +1,28 @@
 import axios from 'axios';
 
-const URI = "https://api.covid19api.com/summary"
+const URI = "https://api.covid19api.com/"
+let extendedURL = 'summary'
+let isGlobal = true
+let values = []
 
-const fetchData = async () => {
-    const { data } = await axios.get(URI)
+const fetchGlobalData = async () => {
+    const { data } = await axios.get(`${URI}${extendedURL}`)
 
     return data
 }
 
+const fetchCountryData = async () => {
+    return
+}
+
+const toggleGlobal = async () => {
+    isGlobal = !isGlobal 
+}
+
+
 export {
-    fetchData
+    fetchGlobalData,
+    fetchCountryData,
+    toggleGlobal,
+    isGlobal
 }

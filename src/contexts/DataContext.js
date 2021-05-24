@@ -1,5 +1,5 @@
 import React, { useState, useEffect,createContext } from 'react'
-import { fetchData } from '../Api';
+import { fetchGlobalData, fetchCountryData, toggleGlobal, isGlobal } from '../Api';
 
 const DataContext = createContext()
 
@@ -10,9 +10,13 @@ const DataProvider = (props) => {
     
     useEffect(() => {        
         const collectData = async () => {
-            setData(await fetchData())
+            setData(await fetchGlobalData())
+            console.log(isGlobal);
+            await toggleGlobal()
+            console.log(isGlobal);
             setIsLoading(false)
         }
+
 
         collectData()
     }, [])

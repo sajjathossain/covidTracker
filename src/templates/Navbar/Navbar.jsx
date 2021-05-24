@@ -1,11 +1,9 @@
-import { Card } from 'ui-neumorphism'
-import 'ui-neumorphism/dist/index.css'
 import { Link } from 'react-router-dom'
 import styles from './Navbar.module.css'
 
 const Navbar = () => {
   return (
-    <Card className={styles.navbar}>
+    <div className={styles.navbar}>
       <div className={styles.navbarBrand}>Covid19</div>
       <ul className={styles.links}>
         <li className={styles.linkContainer}>
@@ -18,7 +16,7 @@ const Navbar = () => {
           <Link to="/contact" className={styles.link}>Contact</Link>
         </li>
       </ul>
-    </Card>
+    </div>
   )
 }
 

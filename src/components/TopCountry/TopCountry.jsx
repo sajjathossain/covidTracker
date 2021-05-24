@@ -5,10 +5,10 @@ import styles from './TopCountry.module.css'
 
 const TopCountry = () => {
   return (
-    <Card className={styles.countryContainer}>
+    <div className={styles.countryContainer}>
       {/* <h1>Top Countries</h1> */}
       <TabComponent />
-    </Card>
+    </div>
   )
 }
 
