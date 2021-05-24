@@ -1,10 +1,12 @@
+import { Card } from 'ui-neumorphism'
+import 'ui-neumorphism/dist/index.css'
 import styles from './Chart.module.css'
 
 const Chart = () => {
   return (
-    <div className={styles.chartContainer}>
+    <Card className={styles.chartContainer}>
       Chart Component
-    </div>
+    </Card>
   )
 }
 

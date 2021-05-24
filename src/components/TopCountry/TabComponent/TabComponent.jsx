@@ -1,4 +1,6 @@
 import { Tabs, TabList, Tab, TabPanels, TabPanel } from "@reach/tabs";
+import { Button } from 'ui-neumorphism'
+import 'ui-neumorphism/dist/index.css'
 import styles from './TabComponent.module.css'
 
 const TabComponent = () => {
@@ -6,9 +8,21 @@ const TabComponent = () => {
     <>
       <Tabs className={styles.tabs}>
         <TabList className={styles.tabList}>
-          <Tab className={styles.tab}>Recovered</Tab>
-          <Tab className={styles.tab}>Infected</Tab>
-          <Tab className={styles.tab}>Deaths</Tab>
+          <Tab className={styles.tab}>
+            <Button className={styles.button}>
+                Recovered
+            </Button>
+          </Tab>
+          <Tab className={styles.tab}>
+            <Button className={styles.button}>
+              Infected
+            </Button>
+          </Tab>
+          <Tab className={styles.tab}>
+            <Button className={styles.button}>
+              Deaths
+            </Button>
+          </Tab>
         </TabList>
         <TabPanels className={styles.tabPanels}>
           <TabPanel>

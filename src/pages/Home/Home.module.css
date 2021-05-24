@@ -3,16 +3,6 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(8, 1fr);
-    /* grid-template-areas: 
-    "results results topCountry"
-    "chart chart topCountry"
-    "chart chart topCountry"
-    "chart chart topCountry"
-    "chart chart topCountry"
-    "chart chart topCountry"
-    "chart chart topCountry"
-    "chart chart topCountry"
-    ; */
 }
 
 .results {

@@ -9,7 +9,6 @@
     z-index: 1000;
     position: sticky;
     top: 0;
-    overflow: visible;
 }
 
 .navbarBrand {
@@ -31,10 +30,15 @@
 
 .link {
     text-decoration: none;
+    border: none;
+    outline: none;
     color: lightseagreen;
 }
 
 .link:hover {
+    text-decoration: none;
     color: lightcoral;
+    border: none;
+    outline: none;
 }
 
