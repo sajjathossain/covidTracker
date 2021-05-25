@@ -20,7 +20,7 @@ const Results = () => {
         const getData = async () => {
             if(!isLoading) {
                 const { NewConfirmed, NewRecovered, NewDeaths, TotalRecovered, TotalDeaths, TotalConfirmed } = values
-                setNewConfirmed(NewConfirmed)
+                setNewConfirmed(!gOrC.isGlobal ? NewConfirmed : values.Active)
                 setNewRecovered(NewRecovered)
                 setNewDeaths(NewDeaths)
                 setTotalConfirmed(await TotalConfirmed)

@@ -3,17 +3,18 @@
 }
 
 select {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    -ms-appearance: none;
-    appearance: none;
-    outline: 0;
-    border: 0 !important;
-    background-image: none;
-    border-radius: 11px;
-  background-color: #fff;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  appearance: none;
+  outline: 0;
+  border: 0 !important;
+  background-image: none;
   border-radius: 11px;
-  }
+  font-size: 1.2rem;
+  font-weight: bold;
+  background-color: #fff;
+}
   /* Remove IE arrow */
 select::-ms-expand {
     display: none;
@@ -26,7 +27,7 @@ select::-ms-expand {
     height: 8vh;
     line-height: 3;
     overflow: hidden;
-    border-radius: .25em;
+    border-radius: 11px;
 }
 select {
     flex: 1;

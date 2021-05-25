@@ -15,7 +15,7 @@ const DataProvider = (props) => {
     const [isLoading, setIsLoading] = useState(true)
 
     const value = {
-        values: countryData[countryData.length - 1] || globalData.Global,
+        values: !isGlobal ? globalData.Global : countryData[countryData.length - 1],
         countryDatas: countryData,
         countryValues: { countryName, setCountryName },
         allCountryName,
@@ -23,28 +23,32 @@ const DataProvider = (props) => {
         isLoading
     }
 
+    const setCountryValues = () => {
+        if(!isGlobal && !globalData){
+            const result = globalData.Countries.filter(obj => {
+                return obj.Country === countryName
+            })
+    
+            console.log(countryData, isGlobal, globalData);
+            setCountryData(result)
+            // setCountryData(await fetchCountryData(countryName))
+        }
+    }
+
     useEffect(() => {        
         const collectData = async () => {
             setGlobalData(await fetchGlobalData())
-            console.log(globalData)
-            console.log(countryData)
-            if(!isGlobal && !globalData){
-                const result = await globalData.Countries.filter(obj => {
-                    return obj.Country === countryName
-                })
-
-                setCountryData(result)
-                // setCountryData(await fetchCountryData(countryName))
-            }
-            
             setAllCountryName(await fetchAllCountryNames())
-            setIsLoading(false)
+            if(!globalData) {
+                setIsLoading(false)
+                setCountryValues()
+            }
         }
         
         collectData()
-    }, [isGlobal, countryData])
+    }, [isGlobal])
 
-    
+
     return (
         <DataContext.Provider value={value}>
             { props.children }
