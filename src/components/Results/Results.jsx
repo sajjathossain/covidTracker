@@ -10,9 +10,9 @@ const Results = () => {
     const [totalDeaths, setTotalDeaths] = useState(null)
     const [totalConfirmed, setTotalConfirmed] = useState(null)
     
-    const {globalValues, countryValues, isGlobal, isLoading} = useContext(DataContext)
-    const {countryData, setCountryData } = countryValues
-    const countryName =  isGlobal ? "Global" : ""
+    const {globalValues, countryValues, gOrC, isLoading} = useContext(DataContext)
+    const countryName =  gOrC.isGlobal ? "Global" : countryValues.countryName
+    
     useEffect(() => {
         const getData = async () => {
             if(!isLoading) {
@@ -25,7 +25,7 @@ const Results = () => {
         
         getData()
         
-    }, [isLoading, globalValues, countryData])
+    }, [isLoading, globalValues, countryName])
     
     return (
         <>

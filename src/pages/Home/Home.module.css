@@ -9,9 +9,13 @@
     grid-column: 1 / span 2; ;
 }
 
+.selectCountry {
+    grid-column: 3;
+}
+
 .topCountry {
     grid-column: 3;
-    grid-row: 1 / span 8;
+    grid-row: 2 / span 8;
 }
 
 .chart {

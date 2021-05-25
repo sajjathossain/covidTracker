@@ -1,6 +1,6 @@
 import Home from './Home/Home';
-import About from './About';
-import Contact from './Contact';
+import About from './About/About';
+import Contact from './Contact/Contact';
 
 export {
     Home,

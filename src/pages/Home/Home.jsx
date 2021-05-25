@@ -7,6 +7,9 @@ const Home = () => {
       <div className={styles.results}>
         <Components.Results />
       </div>
+      <div className={styles.selectCountry}>
+        <Components.SelectCountry />
+      </div>
       <div className={styles.topCountry}>
         <Components.TopCountry />
       </div>

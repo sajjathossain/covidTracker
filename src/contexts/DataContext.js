@@ -14,7 +14,7 @@ const DataProvider = (props) => {
         globalValues: data.Global,
         countryValues: { countryName, setCountryName },
         allCountryName,
-        isGlobal: { isGlobal, setIsGlobal },
+        gOrC: { isGlobal, setIsGlobal },
         isLoading
     }
     
