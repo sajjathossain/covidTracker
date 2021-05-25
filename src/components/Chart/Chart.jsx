@@ -2,7 +2,7 @@ import styles from './Chart.module.css'
 
 const Chart = () => {
   return (
-    <div className={styles.chartContainer}>
+    <div className={`${styles.chartContainer} applyBoxShadow`}>
       Chart Component
     </div>
   )

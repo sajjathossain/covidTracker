@@ -6,35 +6,44 @@ import styles from './Results.module.css'
 
 const Results = () => {
     
+    const [newConfirmed, setNewConfirmed] = useState(null)
+    const [newRecovered, setNewRecovered] = useState(null)
+    const [newDeaths, setNewDeaths] = useState(null)
     const [totalRecovered, setTotalRecovered] = useState(null)
     const [totalDeaths, setTotalDeaths] = useState(null)
     const [totalConfirmed, setTotalConfirmed] = useState(null)
     
-    const {globalValues, countryValues, gOrC, isLoading} = useContext(DataContext)
+    const {values, countryValues, gOrC, isLoading} = useContext(DataContext)
     const countryName =  gOrC.isGlobal ? "Global" : countryValues.countryName
     
     useEffect(() => {
         const getData = async () => {
             if(!isLoading) {
-                const { TotalRecovered, TotalDeaths, TotalConfirmed } = globalValues
+                const { NewConfirmed, NewRecovered, NewDeaths, TotalRecovered, TotalDeaths, TotalConfirmed } = values
+                setNewConfirmed(NewConfirmed)
+                setNewRecovered(NewRecovered)
+                setNewDeaths(NewDeaths)
+                setTotalConfirmed(await TotalConfirmed)
                 setTotalRecovered(await TotalRecovered)
                 setTotalDeaths(await TotalDeaths)
-                setTotalConfirmed(await TotalConfirmed)
             }
         }
         
         getData()
         
-    }, [isLoading, globalValues, countryName])
+    }, [isLoading, values, countryName])
     
     return (
         <>
         {
             isLoading ? <LoadingAnimation /> : 
             <section className={`${styles.resultsContainer}`}>
-                <Result country={countryName} resultText="Recovered" borderColor="lightseagreen" resultValue={totalRecovered} />
-                <Result country={countryName} resultText="Infected" borderColor="lightskyblue" resultValue={totalConfirmed} />
-                <Result country={countryName} resultText="Deaths" borderColor="lightcoral" resultValue={totalDeaths} />
+                <Result country={countryName} resultText="New Confirmed" borderColor="lightseagreen" resultValue={newConfirmed} />
+                <Result country={countryName} resultText="New Recovered" borderColor="lightseagreen" resultValue={newRecovered} />
+                <Result country={countryName} resultText="New Deaths" borderColor="lightseagreen" resultValue={newDeaths} />
+                <Result country={countryName} resultText="Total Confirmed" borderColor="lightskyblue" resultValue={totalConfirmed} />
+                <Result country={countryName} resultText="Total Recovered" borderColor="lightseagreen" resultValue={totalRecovered} />
+                <Result country={countryName} resultText="Total Deaths" borderColor="lightcoral" resultValue={totalDeaths} />
             </section>
         }
         </>

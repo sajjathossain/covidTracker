@@ -11,7 +11,7 @@ const SelectCountry = () => {
   }
 
   return (
-    <div className={styles.selectorContainer}>
+    <div className={`${styles.selectorContainer} applyBoxShadow`}>
       <select className={styles.select} value={!countryName ? "global" : countryName} onChange={handleChange}>
         <option value="global" disabled>Choose an option!</option>
         <option value="global">Global</option>

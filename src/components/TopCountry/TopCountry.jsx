@@ -3,7 +3,7 @@ import styles from './TopCountry.module.css'
 
 const TopCountry = () => {
   return (
-    <div className={styles.countryContainer}>
+    <div className={`${styles.countryContainer} applyBoxShadow`}>
       <TabComponent />
     </div>
   )
