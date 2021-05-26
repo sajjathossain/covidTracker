@@ -19,7 +19,7 @@ const Results = () => {
     useEffect(() => {
         const getData = async () => {
             try {
-                const { NewConfirmed, NewRecovered, NewDeaths, TotalRecovered, TotalDeaths, TotalConfirmed } = gOrC.isGlobal === false ? Object.values(countryDatas)[0] : await values
+                const { NewConfirmed, NewRecovered, NewDeaths, TotalRecovered, TotalDeaths, TotalConfirmed } = gOrC.isGlobal === false ? await Object.values(countryDatas)[0] : await values
                 setNewConfirmed(await NewConfirmed)
                 setNewRecovered(await NewRecovered)
                 setNewDeaths(await NewDeaths)
@@ -33,16 +33,16 @@ const Results = () => {
         
         getData()
         
-    }, [loading.isLoading, countryName, values, countryDatas, gOrC.isGlobal])
+    }, [loading.isLoading, countryName, countryDatas, gOrC.isGlobal])
     
     return (
         <>
         {
             loading.isLoading ? <LoadingAnimation /> : 
             <section className={`${styles.resultsContainer}`}>
-                <Result country={countryName} resultText="New Confirmed" borderColor="lightseagreen" resultValue={newConfirmed} />
+                <Result country={countryName} resultText="New Confirmed" borderColor="lightskyblue" resultValue={newConfirmed} />
                 <Result country={countryName} resultText="New Recovered" borderColor="lightseagreen" resultValue={newRecovered} />
-                <Result country={countryName} resultText="New Deaths" borderColor="lightseagreen" resultValue={newDeaths} />
+                <Result country={countryName} resultText="New Deaths" borderColor="lightcoral" resultValue={newDeaths} />
                 <Result country={countryName} resultText="Total Confirmed" borderColor="lightskyblue" resultValue={totalConfirmed} />
                 <Result country={countryName} resultText="Total Recovered" borderColor="lightseagreen" resultValue={totalRecovered} />
                 <Result country={countryName} resultText="Total Deaths" borderColor="lightcoral" resultValue={totalDeaths} />

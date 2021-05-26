@@ -1,4 +1,5 @@
 import { Tabs, TabList, Tab, TabPanels, TabPanel } from "@reach/tabs";
+import TabPanelComponent from './TobPanelComponent/TabPanelComponent'
 import "@reach/tabs/styles.css";
 import styles from './TabComponent.module.css'
 
@@ -8,30 +9,24 @@ const TabComponent = () => {
       <Tabs className={styles.tabs}>
         <TabList className={styles.tabList}>
           <Tab className={styles.tab}>
-            {/* <Button className={styles.button}> */}
-                Recovered
-            {/* </Button> */}
+            Recovered
           </Tab>
           <Tab className={styles.tab}>
-            {/* <Button className={styles.button}> */}
-              Infected
-            {/* </Button> */}
+            Infected
           </Tab>
           <Tab className={styles.tab}>
-            {/* <Button className={styles.button}> */}
-              Deaths
-            {/* </Button> */}
+            Deaths
           </Tab>
         </TabList>
         <TabPanels className={styles.tabPanels}>
-          <TabPanel>
-            <p>one!</p>
+          <TabPanel className={styles.tabPanel}>
+            <TabPanelComponent countries={"Bangladesh"}/>
           </TabPanel>
           <TabPanel>
-            <p>two!</p>
+            <TabPanelComponent countries={"India"}/>
           </TabPanel>
           <TabPanel>
-            <p>three!</p>
+            <TabPanelComponent countries={"Chaina"}/>
           </TabPanel>
         </TabPanels>
       </Tabs>
