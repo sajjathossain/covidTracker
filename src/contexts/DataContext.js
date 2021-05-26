@@ -7,47 +7,70 @@ const DataProvider = (props) => {
     const [globalData, setGlobalData] = useState([])
     const [countryData, setCountryData] = useState([])
     const [isGlobal, setIsGlobal] = useState(false)
-    const [countryName, setCountryName] = useState('India')
+    const [countryName, setCountryName] = useState(null)
     const [allCountryName, setAllCountryName] = useState([])
-    const [topRecoveredCountries, setTopRecoveredCountries] = useState([])
     const [topConfirmedCountries, setTopConfirmedCountries] = useState([])
+    const [topRecoveredCountries, setTopRecoveredCountries] = useState([])
     const [topCountriesByDeath, setTopCountriesByDeath] = useState([])
     const [isLoading, setIsLoading] = useState(true)
 
     const value = {
-        values: !isGlobal ? globalData.Global : countryData[countryData.length - 1],
+        values: globalData.Global,
         countryDatas: countryData,
         countryValues: { countryName, setCountryName },
         allCountryName,
         gOrC: { isGlobal, setIsGlobal },
-        isLoading
+        loading: { isLoading, setIsLoading },
     }
 
-    const setCountryValues = () => {
-        if(!isGlobal && !globalData){
-            const result = globalData.Countries.filter(obj => {
-                return obj.Country === countryName
-            })
     
-            console.log(countryData, isGlobal, globalData);
-            setCountryData(result)
-            // setCountryData(await fetchCountryData(countryName))
-        }
-    }
-
     useEffect(() => {        
         const collectData = async () => {
             setGlobalData(await fetchGlobalData())
-            setAllCountryName(await fetchAllCountryNames())
-            if(!globalData) {
-                setIsLoading(false)
-                setCountryValues()
+            
+            if(countryName !== null) {
+                const result = await setCountryValues()
+                setCountryData(await result)
             }
+
+            await getAllCountryName()
+            // await getTopCountriesByInfected()
+            setIsLoading(false)
         }
         
         collectData()
-    }, [isGlobal])
+    }, [countryName, isLoading, isGlobal])
+    
+    const getAllCountryName = async () => {
+        try {
+            const countries = await globalData.Countries
+            let result = []
+            for(let country in countries){
+                result.push(countries[country].Country)
+            }
+            
+            setAllCountryName(result)
+            // return result
+        } catch(err) {
+            console.log(err)
+        }
+    }
 
+    const setCountryValues = () => {
+        try{
+            const result = globalData.Countries.filter(obj => {
+                return obj.Country === countryName
+            })
+            return result
+        } catch(err) {
+            console.log(err)
+        }
+
+    }
+
+    // const getTopCountriesByInfected = async () => {
+    //     console.log(countries);
+    // }
 
     return (
         <DataContext.Provider value={value}>

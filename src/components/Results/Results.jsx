@@ -13,30 +13,32 @@ const Results = () => {
     const [totalDeaths, setTotalDeaths] = useState(null)
     const [totalConfirmed, setTotalConfirmed] = useState(null)
     
-    const {values, countryValues, gOrC, isLoading} = useContext(DataContext)
+    const {values, countryDatas, countryValues, gOrC, loading} = useContext(DataContext)
     const countryName =  gOrC.isGlobal ? "Global" : countryValues.countryName
     
     useEffect(() => {
         const getData = async () => {
-            if(!isLoading) {
-                const { NewConfirmed, NewRecovered, NewDeaths, TotalRecovered, TotalDeaths, TotalConfirmed } = values
-                setNewConfirmed(!gOrC.isGlobal ? NewConfirmed : values.Active)
-                setNewRecovered(NewRecovered)
-                setNewDeaths(NewDeaths)
+            try {
+                const { NewConfirmed, NewRecovered, NewDeaths, TotalRecovered, TotalDeaths, TotalConfirmed } = gOrC.isGlobal === false ? Object.values(countryDatas)[0] : await values
+                setNewConfirmed(await NewConfirmed)
+                setNewRecovered(await NewRecovered)
+                setNewDeaths(await NewDeaths)
                 setTotalConfirmed(await TotalConfirmed)
                 setTotalRecovered(await TotalRecovered)
                 setTotalDeaths(await TotalDeaths)
+            } catch (e) {
+                console.log(e)
             }
         }
         
         getData()
         
-    }, [isLoading, values, countryName])
+    }, [loading.isLoading, countryName, values, countryDatas, gOrC.isGlobal])
     
     return (
         <>
         {
-            isLoading ? <LoadingAnimation /> : 
+            loading.isLoading ? <LoadingAnimation /> : 
             <section className={`${styles.resultsContainer}`}>
                 <Result country={countryName} resultText="New Confirmed" borderColor="lightseagreen" resultValue={newConfirmed} />
                 <Result country={countryName} resultText="New Recovered" borderColor="lightseagreen" resultValue={newRecovered} />
