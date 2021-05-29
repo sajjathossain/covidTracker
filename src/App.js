@@ -11,9 +11,9 @@ const App = () => {  return (
         <Router>
           <Navbar />
           <Switch>
-            <Route exact path='/' component={Home} />
-            <Route exact path='/about' component={About} />
-            <Route exact path='/contact' component={Contact} />
+            <Route exact path='/covidTracker' component={Home} />
+            <Route exact path='/covidTracker/about' component={About} />
+            <Route exact path='/covidTracker/contact' component={Contact} />
           </Switch>
           <Footer />
         </Router>
