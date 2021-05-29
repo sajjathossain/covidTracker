@@ -1,10 +1,15 @@
 import { Link } from 'react-router-dom'
 import styles from './Navbar.module.css'
+import { covid19Icon } from '../../img'
 
 const Navbar = () => {
   return (
     <div className={`${styles.navbar}`}>
-      <div className={styles.navbarBrand}>Covid19</div>
+      <div className={styles.navbarBrand}>
+        C
+        <img src={covid19Icon} alt="icon" type="image/svg" className={styles.covid19Icon} />
+        vid19
+      </div>
       <ul className={styles.links}>
         <li className={styles.linkContainer}>
           <Link to="/" className={styles.link}>Home</Link>

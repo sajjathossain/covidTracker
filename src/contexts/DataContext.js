@@ -1,5 +1,5 @@
 import React, { useState, useEffect,createContext } from 'react'
-import { fetchGlobalData, fetchCountryData, fetchAllCountryNames } from '../Api/Api';
+import { fetchGlobalData } from '../Api/Api';
 
 const DataContext = createContext()
 
@@ -20,7 +20,10 @@ const DataProvider = (props) => {
         countryValues: { countryName, setCountryName },
         allCountryName,
         gOrC: { isGlobal, setIsGlobal },
-        loading: { isLoading, setIsLoading }
+        loading: { isLoading, setIsLoading },
+        topConfirmedCountries,
+        topRecoveredCountries,
+        topCountriesByDeath
     }
 
     
@@ -34,7 +37,7 @@ const DataProvider = (props) => {
             }
 
             await getAllCountryName()
-            // await getTopCountriesByInfected()
+            await getTopCountriesByConfirmed()
             setIsLoading(false)
         }
         
@@ -50,7 +53,6 @@ const DataProvider = (props) => {
             }
             
             setAllCountryName(result)
-            // return result
         } catch(err) {
             console.log(err)
         }
@@ -68,9 +70,31 @@ const DataProvider = (props) => {
 
     }
 
-    // const getTopCountriesByInfected = async () => {
-    //     console.log(countries);
-    // }
+    const getTopCountriesByConfirmed = async () => {
+        try {            
+            let confirmedCountries = await globalData.Countries.slice(0)
+            confirmedCountries = await confirmedCountries.sort((a, b) => {
+                return b.TotalConfirmed - a.TotalConfirmed
+            })
+            
+            let recoveredCountries = await globalData.Countries.slice(0)
+            recoveredCountries = await recoveredCountries.sort((a, b) => {
+                return b.TotalRecovered - a.TotalRecovered
+            })
+            
+            let deathsCountries = await globalData.Countries.slice(0)
+            deathsCountries = await deathsCountries.sort((a, b) => {
+                return b.TotalDeaths - a.TotalDeaths
+            })
+
+            setTopConfirmedCountries(confirmedCountries.slice(0, 10))
+            setTopRecoveredCountries(recoveredCountries.slice(0, 10))
+            setTopCountriesByDeath(deathsCountries.slice(0, 10))
+        } catch (error) {
+            console.log(error)
+        }
+
+    }
 
     return (
         <DataContext.Provider value={value}>

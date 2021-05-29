@@ -6,6 +6,7 @@
 
 .tabList, .tabPanels {
     display: grid;
+    background-color: #fff;
     grid-template-columns: repeat(3, 1fr);
     height: 4vh;
     gap: 10px;
@@ -17,7 +18,33 @@
     border: none;
     outline: none;
     border-radius: 50px;
+    background-color: rgba(255, 248, 248, 0.699);
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2),
+                2px 5px 5px rgba(0, 0, 0, 0.2);
+}
+
+.active,
+.active:active {
+    border: none;
+    outline: none;
     border-radius: 50px;
+    font-weight: bold;
+    color: rgb(255, 248, 248);
+    box-shadow: inset 5px 2px 5px rgba(0, 0, 0, 0.2),
+                inset 2px -2px 5px rgba(0, 0, 0, 0.2),
+                inset 2px -2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.activeInfected {
+    background-color: rgb(34, 199, 191);
+}
+
+.activeRecovered {
+    background-color: rgb(105, 181, 228);
+}
+
+.activeDeaths {
+    background-color: rgb(230, 110, 110);
 }
 
 .button {
@@ -28,10 +55,7 @@
 
 .button:active,
 .button:focus,
-.button:hover 
-.tab:active, 
-.tab:focus,
-.tab:hover {
+.button:hover {
     color: lightseagreen !important;
 }
 
