@@ -29,8 +29,8 @@ const TabComponent = () => {
     }, [topConfirmedCountries, topRecoveredCountries, topCountriesByDeath])
 
   return (
-    <>
-      <Tabs className={styles.tabs}>
+    <div className={styles.tabBg}>
+      <Tabs className={`${styles.tabs}`}>
         <TabList className={styles.tabList} >
           <Tab className={currentTab === 1 ? `${styles.active} ${styles.activeInfected}` : `${styles.tab}`} onMouseDown={() => {
             setCurrentTab(1);
@@ -60,7 +60,7 @@ const TabComponent = () => {
           </TabPanel>
         </TabPanels>
       </Tabs>
-    </>
+    </div>
   )
 }
 

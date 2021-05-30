@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext } from 'react'
+import { useEffect, useContext } from 'react'
 import { DataContext } from '../../contexts/DataContext'
 import LoadingAnimation from '../LoadingAnimaton/LoadingAnimation'
 import styles from './SelectCountry.module.css';
@@ -6,7 +6,6 @@ import styles from './SelectCountry.module.css';
 const SelectCountry = () => {
   const { countryValues, allCountryName, gOrC, loading } = useContext(DataContext)
   const {countryName, setCountryName} = countryValues
-  const [currentCountry, setCurrentCountry] = useState(null)
 
   const handleChange = async (e) => {
     loading.setIsLoading(true)
@@ -30,7 +29,7 @@ const SelectCountry = () => {
     <div className={`${styles.selectorContainer} applyBoxShadow`}>
       <select className={styles.select} value={!countryName ? "global" : countryName} onChange={handleChange}>
         <option disabled>Choose a country!</option>
-        <option Value="global">Global</option>
+        <option value="global">Global</option>
         {
           allCountryName.map((country) => {
               return <option value={country} key={allCountryName.indexOf(country)}>{country}</option>

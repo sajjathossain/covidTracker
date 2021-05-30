@@ -47,14 +47,17 @@ const Chart = () => {
       },
     },
     responsive: true,
+    // maintainAspectration: true,
     plugins: {
       legend: {
-        position: 'right',
+        fontSize: 24,
+        position: 'bottom',
       },
       title: {
         display: true,
         text: 'Covid19 Data Visualization',
-        fontSize: 25
+        fontSize: 25,
+        position: 'top'
       },
     },
   };
@@ -79,7 +82,7 @@ const Chart = () => {
 
   return (
     <div className={`${styles.chartContainer} applyBoxShadow`}>
-      <ChartComponent.Bar data={data} options={options} />
+      <ChartComponent.Bar data={data} options={options} height={"auto"} />
     </div>
   )
 }

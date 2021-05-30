@@ -16,9 +16,9 @@
 
 .countryName {
   margin: 0 0 0.4vh 0.75vw;
-  padding: 0.75vh 1vw;
+  padding: 0.75vh .5vw;
   height: 100%;
-  width: 100%;
+  width: 95%;
   color: lightseagreen;
   border: 1px solid #00000038;
   border-radius: 25px !important;
@@ -30,4 +30,12 @@
   border: 1px solid lightseagreen;
   color: rgb(51, 85, 83);
   cursor: pointer;
+}
+
+.tabPanelComponent:active,
+.tabPanelComponent:focus,
+.countryName:active,
+.countryName:focus {
+  outline: none !important;
+  border: none;
 }

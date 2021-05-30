@@ -1,5 +1,7 @@
 .selectorContainer {
-    margin: 0 0 0 1vw;
+    margin: 0 0 0 0;
+    border-radius: 11px;
+    width: 100%;
 }
 
 select {

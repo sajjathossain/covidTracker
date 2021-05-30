@@ -33,7 +33,7 @@ const Results = () => {
         
         getData()
         
-    }, [loading.isLoading, countryName, countryDatas, gOrC.isGlobal])
+    }, [loading.isLoading, countryName, countryDatas, gOrC.isGlobal, values])
     
     return (
         <>

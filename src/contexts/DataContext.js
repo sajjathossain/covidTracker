@@ -27,23 +27,6 @@ const DataProvider = (props) => {
     }
 
     
-    useEffect(() => {        
-        const collectData = async () => {
-            setGlobalData(await fetchGlobalData())
-            
-            if(countryName !== null) {
-                const result = await setCountryValues()
-                setCountryData(await result)
-            }
-
-            await getAllCountryName()
-            await getTopCountriesByConfirmed()
-            setIsLoading(false)
-        }
-        
-        collectData()
-    }, [countryName, isLoading, isGlobal])
-    
     const getAllCountryName = async () => {
         try {
             const countries = await globalData.Countries
@@ -57,7 +40,7 @@ const DataProvider = (props) => {
             console.log(err)
         }
     }
-
+    
     const setCountryValues = () => {
         try{
             const result = globalData.Countries.filter(obj => {
@@ -67,9 +50,9 @@ const DataProvider = (props) => {
         } catch(err) {
             console.log(err)
         }
-
+        
     }
-
+    
     const getTopCountriesByConfirmed = async () => {
         try {            
             let confirmedCountries = await globalData.Countries.slice(0)
@@ -86,16 +69,33 @@ const DataProvider = (props) => {
             deathsCountries = await deathsCountries.sort((a, b) => {
                 return b.TotalDeaths - a.TotalDeaths
             })
-
+            
             setTopConfirmedCountries(confirmedCountries.slice(0, 10))
             setTopRecoveredCountries(recoveredCountries.slice(0, 10))
             setTopCountriesByDeath(deathsCountries.slice(0, 10))
         } catch (error) {
             console.log(error)
         }
-
+        
     }
+    
+    useEffect(() => {        
+        const collectData = async () => {
+            setGlobalData(await fetchGlobalData())
+            
+            if(countryName !== null) {
+                const result = await setCountryValues()
+                setCountryData(await result)
+            }
 
+            await getAllCountryName()
+            await getTopCountriesByConfirmed()
+            setIsLoading(false)
+        }
+        
+        collectData()
+    }, [countryName, isLoading])
+    
     return (
         <DataContext.Provider value={value}>
             { props.children }
