@@ -1,10 +1,14 @@
 import axios from 'axios';
-const URI = "https://api.covid19api.com"
 
 const fetchGlobalData = async () => {
-    const { data } = await axios.get(`${URI}/summary`)
-    
-    return data
+    const URI = "https://api.covid19api.com"
+    try {
+        const { data } = await axios.get(`${URI}/summary`)
+
+        return data
+    } catch(error) {
+        console.log(error)
+    }
 }
 
 export {

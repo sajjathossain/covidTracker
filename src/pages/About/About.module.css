@@ -1,0 +1,46 @@
+.container {
+    height: 87vh;
+    width: 100vw;
+    font-size: 1.35rem;
+    color: #264e70;
+    position: relative;
+    display: block;
+    z-index: 10;
+}
+
+.container:after {
+    content: "";
+    background: url(../../img/medical.jpg);
+    opacity: 0.5;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;   
+}
+
+.cardHeader {
+}
+
+.cardContent {
+    margin-top: 1vh;
+    width: 100%;
+    top: 0;
+    left: auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    word-wrap: break-word;
+}
+
+.contentText {
+    line-height: 1.3;
+    font-weight: 500;
+    grid-column: 1 / span 3;
+}
+
+.contentImage img {
+    grid-column: 3 / span 1;
+    height: 35vh;
+    width: 25vw;
+}
