@@ -1,7 +1,12 @@
+import styles from './Contact.module.css'
+
 const Contact = () => {
   return (
-    <section>
-      <p>Contact Page Component</p>
+    <section className={`wrapper ${styles.container}`}>
+      <div className={`${styles.left} applyBoxShadow`}>
+        <iframe scrollbar="hidden" src="https://sajjathossain.github.io/sajjathossain/" frameborder="0" className={styles.iFrame}></iframe>
+      </div>
+      <div className={`${styles.right} applyBoxShadow`}></div>
     </section>
     );
 };

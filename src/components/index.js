@@ -1,7 +1,7 @@
 import Chart from './Chart/Chart'
-import SelectCountry from './SelectCountry/SelectCountry'
 import LoadingAnimation from './LoadingAnimaton/LoadingAnimation'
 import Results from './Results/Results'
+import SelectCountry from './SelectCountry/SelectCountry'
 import TopCountry from './TopCountry/TopCountry'
 
 export {

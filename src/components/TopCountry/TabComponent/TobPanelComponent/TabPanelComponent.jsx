@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
+
 import LoadingAnimation from '../../../LoadingAnimaton/LoadingAnimation'
 import styles from './TabPanelComponent.module.css'
 

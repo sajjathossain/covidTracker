@@ -1,11 +1,13 @@
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { Home, About, Contact } from './pages'
-import { Navbar, Footer } from './templates'
-import { DataProvider } from './contexts/DataContext'
 import './App.css'
 
+import { About, Contact, Home } from './pages'
+import { Footer, Navbar } from './templates'
+import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
 
-const App = () => {  return (
+import { DataProvider } from './contexts/DataContext'
+
+const App = () => {  
+  return (
     <DataProvider>
       <section className="appBody">
         <Router>

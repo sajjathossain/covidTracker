@@ -1,5 +1,7 @@
-import { useState, useEffect, useContext } from 'react'
 import * as ChartComponent from 'react-chartjs-2';
+
+import { useContext, useEffect, useState } from 'react'
+
 import { DataContext } from '../../contexts/DataContext'
 import styles from './Chart.module.css'
 

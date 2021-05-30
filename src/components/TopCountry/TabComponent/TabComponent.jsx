@@ -1,8 +1,10 @@
-import { useState, useEffect, useContext } from 'react'
-import { Tabs, TabList, Tab, TabPanels, TabPanel } from "@reach/tabs";
-import TabPanelComponent from './TobPanelComponent/TabPanelComponent'
-import { DataContext } from '../../../contexts/DataContext'
 import "@reach/tabs/styles.css";
+
+import { Tab, TabList, TabPanel, TabPanels, Tabs } from "@reach/tabs";
+import { useContext, useEffect, useState } from 'react'
+
+import { DataContext } from '../../../contexts/DataContext'
+import TabPanelComponent from './TobPanelComponent/TabPanelComponent'
 import styles from './TabComponent.module.css'
 
 const TabComponent = () => {

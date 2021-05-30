@@ -1,0 +1,43 @@
+.container {
+    --left-right-height: 95%;
+    --left-right-width: 50%;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0 1vw;
+}
+
+/* .container:after */
+
+.left {
+    border-radius: 11px;
+    width: var(--left-right-width);
+    height: var(--left-right-height);
+    overflow: hidden;
+}
+
+.left .iFrame {
+    padding: 1vh 1vw;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+}
+
+
+.iFrame::-webkit-scrollbar {
+    width: 0;
+    display: none;
+}
+
+.right {
+    border-radius: 11px;
+    width: var(--left-right-width);
+    height: var(--left-right-height);
+}
+
+iframe {
+    -ms-overflow-style: none !important;
+    overflow: hidden;
+}

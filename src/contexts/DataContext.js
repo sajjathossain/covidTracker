@@ -1,4 +1,5 @@
-import React, { useState, useEffect,createContext } from 'react'
+import React, { createContext, useEffect, useState } from 'react'
+
 import { fetchGlobalData } from '../Api/Api';
 
 const DataContext = createContext()
@@ -13,6 +14,7 @@ const DataProvider = (props) => {
     const [topRecoveredCountries, setTopRecoveredCountries] = useState([])
     const [topCountriesByDeath, setTopCountriesByDeath] = useState([])
     const [isLoading, setIsLoading] = useState(true)
+    const [isError, setIsError] = useState(false)
 
     const value = {
         values: globalData.Global,
@@ -23,7 +25,8 @@ const DataProvider = (props) => {
         loading: { isLoading, setIsLoading },
         topConfirmedCountries,
         topRecoveredCountries,
-        topCountriesByDeath
+        topCountriesByDeath,
+        isError
     }
 
     
@@ -81,20 +84,26 @@ const DataProvider = (props) => {
     
     useEffect(() => {        
         const collectData = async () => {
-            setGlobalData(await fetchGlobalData())
-            
-            if(countryName !== null) {
-                const result = await setCountryValues()
-                setCountryData(await result)
-            }
+            try {
+                setGlobalData(await fetchGlobalData())
+                
+                if(countryName !== null) {
+                    const result = await setCountryValues()
+                    setCountryData(await result)
+                }
 
-            await getAllCountryName()
-            await getTopCountriesByConfirmed()
-            setIsLoading(false)
+                await getAllCountryName()
+                await getTopCountriesByConfirmed()
+                setIsLoading(false)
+                setIsError(false)
+            } catch (error) {
+                setIsError(true)
+                // console.log(error)
+            }
         }
         
         collectData()
-    }, [countryName, isLoading])
+    }, [countryName, isLoading, isError])
     
     return (
         <DataContext.Provider value={value}>

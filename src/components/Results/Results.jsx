@@ -1,7 +1,8 @@
-import { useEffect, useState, useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
+
 import { DataContext } from '../../contexts/DataContext'
-import Result from './Result/Result'
 import LoadingAnimation from '../LoadingAnimaton/LoadingAnimation'
+import Result from './Result/Result'
 import styles from './Results.module.css'
 
 const Results = () => {

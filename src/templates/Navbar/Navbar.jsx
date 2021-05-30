@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
-import styles from './Navbar.module.css'
 import { covid19Icon } from '../../img'
+import styles from './Navbar.module.css'
 
 const Navbar = () => {
   return (
