@@ -30,7 +30,7 @@ const SelectCountry = () => {
     <div className={`${styles.selectorContainer} applyBoxShadow`}>
       <select className={styles.select} value={!countryName ? "global" : countryName} onChange={handleChange}>
         <option disabled>Choose a country!</option>
-        <option defaultValue="global">Global</option>
+        <option Value="global">Global</option>
         {
           allCountryName.map((country) => {
               return <option value={country} key={allCountryName.indexOf(country)}>{country}</option>

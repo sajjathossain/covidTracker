@@ -21,7 +21,7 @@
   width: 100%;
   color: lightseagreen;
   border: 1px solid #00000038;
-  border-radius: 5px !important;
+  border-radius: 25px !important;
   display: flex;
   justify-content: space-between;
 }
